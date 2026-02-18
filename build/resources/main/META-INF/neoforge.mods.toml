@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+modId="beer_snacks"
+version="0.0.1"
+displayName="beer_snacks"
+authors="Mopk"
+description='''Different food.'''
+
+[[dependencies.beer_snacks]]
+    modId="neoforge"
+    type="required"
+    versionRange="[21.1.218,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.beer_snacks]]
+    modId="minecraft"
+    type="required"
+    versionRange="[1.21.1,)"
+    ordering="NONE"
+    side="BOTH"
