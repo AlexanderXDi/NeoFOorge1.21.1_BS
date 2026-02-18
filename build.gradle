@@ -97,9 +97,3 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 
-tasks.register('copyJar', Copy) {
-    from jar.archiveFile
-    into "C:/Users/AlexanderXDi/AppData/Roaming/PrismLauncher/instances/1.21.1/minecraft/mods"
-    rename { String fileName -> "${mod_name}.jar" }
-}
-build.finalizedBy(copyJar)
