@@ -1,6 +1,6 @@
 package mopk.beer_snacks;
 
-import static mopk.beer_snacks.items.TabIcon.TAB_ICON;
+import static mopk.beer_snacks.items.ModItems.TAB_ICON;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;

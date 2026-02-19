@@ -1,0 +1,6 @@
+﻿{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "layer0": "beer_snacks:block/palm_tree_log_block"
+  }
+}

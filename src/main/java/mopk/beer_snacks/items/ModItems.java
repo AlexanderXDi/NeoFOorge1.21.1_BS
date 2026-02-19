@@ -6,7 +6,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 
-public class TabIcon {
+public class ModItems {
     public static final DeferredRegister.Items ITEMS =
             DeferredRegister.createItems(Beer_snacks.MODID);
 
