@@ -5,6 +5,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -19,7 +20,7 @@ public class ModBlocks {
             DeferredRegister.createBlocks(Beer_snacks.MODID);
 
     public static final DeferredBlock<Block> PALM_TREE_LOG_BLOCK = registerBlock("palm_tree_log_block",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)));
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> blockSupplier) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, blockSupplier);
