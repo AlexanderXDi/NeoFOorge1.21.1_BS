@@ -32,4 +32,5 @@ run/
 .settings/
 bin/
 tmp/
-*.loglocal.properties
+*.log
+local.properties
