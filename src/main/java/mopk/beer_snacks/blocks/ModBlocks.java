@@ -38,10 +38,10 @@ public class ModBlocks {
             () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
 
     public static final TreeGrower PALM_TREE_GROWER = new TreeGrower(
-            "palm",                   // ID для отладки
-            Optional.of(PALM_TREE_KEY),          // Дерево для 1x1 (например, дуб)
-            Optional.empty(),          // Дерево для 2x2 (если есть)
-            Optional.empty()           // Редкий вариант дерева
+            "palm",                         // ID для отладки
+            Optional.of(PALM_TREE_KEY),           // Дерево для 1x1 (например, дуб)
+            Optional.empty(),                     // Дерево для 2x2 (если есть)
+            Optional.empty()                      // Редкий вариант дерева
     );
 
     public static final DeferredBlock<Block> PALM_TREE_SAPLING_BLOCK = registerBlock("palm_tree_sapling_block",
