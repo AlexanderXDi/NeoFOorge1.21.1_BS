@@ -33,6 +33,7 @@ public class Beer_snacks {
             event.accept(PALM_TREE_LOG_BLOCK.get());
             event.accept(PALM_TREE_PLANK_BLOCK.get());
             event.accept(PALM_TREE_LEAVES_BLOCK.get());
+            event.accept(PALM_TREE_SAPLING_BLOCK.get());
         }
     }
 }
