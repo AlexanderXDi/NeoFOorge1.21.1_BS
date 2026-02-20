@@ -1,6 +1,6 @@
 ﻿{
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "beer_snacks:block/palm_tree_log_block"
+    "all": "beer_snacks:block/palm_tree_plank_block"
   }
 }

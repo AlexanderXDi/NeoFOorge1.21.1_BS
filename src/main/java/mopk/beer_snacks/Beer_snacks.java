@@ -31,6 +31,8 @@ public class Beer_snacks {
         if (event.getTabKey() == MOD_TAB.getKey()) {
             event.accept(TAB_ICON.get());
             event.accept(PALM_TREE_LOG_BLOCK.get());
+            event.accept(PALM_TREE_PLANK_BLOCK.get());
+            event.accept(PALM_TREE_LEAVES_BLOCK.get());
         }
     }
 }

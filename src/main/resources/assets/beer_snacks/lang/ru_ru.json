@@ -1,4 +1,7 @@
 {
-  "item.beer_snacks.tab_icon": "Tab Icon",
-  "creativetab.beer_snacks.mod_tab": "Beer snacks"
+  "item.beer_snacks.tab_icon": "Иконка вкладки",
+  "creativetab.beer_snacks.mod_tab": "Пивные закуски",
+  "block.beer_snacks.palm_tree_plank_block": "Пальмовое дерево",
+  "block.beer_snacks.palm_tree_log_block": "Пальмовая доска",
+  "block.beer_snacks.palm_tree_leaves_block": "Пальмовые листья"
 }
