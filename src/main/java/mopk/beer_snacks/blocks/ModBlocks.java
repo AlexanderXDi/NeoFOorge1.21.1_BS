@@ -9,7 +9,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.grower.TreeGrower;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -25,23 +28,49 @@ public class ModBlocks {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PALM_TREE_KEY = ResourceKey.create(
             Registries.CONFIGURED_FEATURE,
-            ResourceLocation.fromNamespaceAndPath(Beer_snacks.MODID, "palm")
+            ResourceLocation.fromNamespaceAndPath("beer_snacks", "palm")
     );
 
     public static final DeferredBlock<Block> PALM_TREE_LOG_BLOCK = registerBlock("palm_tree_log_block",
-            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)));
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)
+                    .mapColor(MapColor.WOOD)
+                    .instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F)
+                    .sound(SoundType.WOOD)
+                    .ignitedByLava()
+                    .requiresCorrectToolForDrops()
+            ));
 
     public static final DeferredBlock<Block> PALM_TREE_PLANK_BLOCK = registerBlock("palm_tree_plank_block",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)
+                    .mapColor(MapColor.WOOD)
+                    .instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F, 3.0F)
+                    .sound(SoundType.WOOD)
+                    .ignitedByLava()
+                    .requiresCorrectToolForDrops()
+            ));
 
     public static final DeferredBlock<Block> PALM_TREE_LEAVES_BLOCK = registerBlock("palm_tree_leaves_block",
-            () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
+            () -> new LeavesBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
+                    .strength(0.2F)
+                    .randomTicks()
+                    .sound(SoundType.GRASS)
+                    .noOcclusion()
+                    .isValidSpawn((state, world, pos, type) -> false)
+                    .isSuffocating((state, world, pos) -> false)
+                    .isViewBlocking((state, world, pos) -> false)
+                    .ignitedByLava()
+                    .pushReaction(PushReaction.DESTROY)
+                    .requiresCorrectToolForDrops()
+            ));
 
     public static final TreeGrower PALM_TREE_GROWER = new TreeGrower(
-            "palm",                         // ID для отладки
-            Optional.of(PALM_TREE_KEY),           // Дерево для 1x1 (например, дуб)
-            Optional.empty(),                     // Дерево для 2x2 (если есть)
-            Optional.empty()                      // Редкий вариант дерева
+            "palm",
+            Optional.empty(),
+            Optional.of(PALM_TREE_KEY),
+            Optional.empty()
     );
 
     public static final DeferredBlock<Block> PALM_TREE_SAPLING_BLOCK = registerBlock("palm_tree_sapling_block",

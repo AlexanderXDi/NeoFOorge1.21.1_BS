@@ -1,7 +1,8 @@
 ﻿{
   "item.beer_snacks.tab_icon": "Tab Icon",
   "creativetab.beer_snacks.mod_tab": "Beer snacks",
-  "block.beer_snacks.palm_tree_plank_block": "Palm log",
-  "block.beer_snacks.palm_tree_log_block": "Palm plank",
-  "block.beer_snacks.palm_tree_leaves_block": "Palm leaves"
+  "block.beer_snacks.palm_tree_plank_block": "Palm plank",
+  "block.beer_snacks.palm_tree_log_block": "Palm log",
+  "block.beer_snacks.palm_tree_leaves_block": "Palm leaves",
+  "block.beer_snacks.palm_tree_sapling_block": "Palm sapling"
 }

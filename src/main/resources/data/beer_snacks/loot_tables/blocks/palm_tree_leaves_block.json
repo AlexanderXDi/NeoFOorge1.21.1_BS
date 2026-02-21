@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "beer_snacks:palm_tree_leaves_block",
+              "conditions": [
+                {
+                  "condition": "minecraft:any_of",
+                  "terms": [
+                    { "condition": "minecraft:match_tool", "predicate": { "items": "minecraft:shears" } },
+                    { "condition": "minecraft:has_silk_touch" }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "minecraft:group",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "name": "beer_snacks:palm_sapling",
+                  "conditions": [
+                    { "condition": "minecraft:random_chance", "chance": 0.05 }
+                  ]
+                },
+                {
+                  "type": "minecraft:item",
+                  "name": "minecraft:stick",
+                  "conditions": [
+                    { "condition": "minecraft:random_chance", "chance": 0.02 }
+                  ]
+                }
+              ],
+              "conditions": [
+                { "condition": "minecraft:survives_explosion" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
