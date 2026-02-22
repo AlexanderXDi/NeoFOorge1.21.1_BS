@@ -25,15 +25,14 @@
     },
     "trunk_placer": {
       "type": "minecraft:straight_trunk_placer",
-      "base_height": 4,
-      "height_rand_a": 2,
+      "base_height": 5,
+      "height_rand_a": 3,
       "height_rand_b": 0
     },
     "foliage_placer": {
-      "type": "minecraft:blob_foliage_placer",
-      "radius": 2,
-      "offset": 0,
-      "height": 2
+      "type": "minecraft:acacia_foliage_placer",
+      "radius": 3,
+      "offset": 0
     },
     "decorators": []
   }
