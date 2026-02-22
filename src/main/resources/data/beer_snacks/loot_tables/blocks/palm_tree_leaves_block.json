@@ -14,35 +14,70 @@
                 {
                   "condition": "minecraft:any_of",
                   "terms": [
-                    { "condition": "minecraft:match_tool", "predicate": { "items": "minecraft:shears" } },
-                    { "condition": "minecraft:has_silk_touch" }
+                    {
+                      "condition": "minecraft:match_tool",
+                      "predicate": {
+                        "items": "minecraft:shears"
+                      }
+                    },
+                    {
+                      "condition": "minecraft:has_silk_touch"
+                    }
                   ]
                 }
               ]
             },
             {
-              "type": "minecraft:group",
-              "children": [
+              "type": "minecraft:item",
+              "name": "beer_snacks:palm_tree_sapling_block",
+              "conditions": [
                 {
-                  "type": "minecraft:item",
-                  "name": "beer_snacks:palm_sapling",
-                  "conditions": [
-                    { "condition": "minecraft:random_chance", "chance": 0.05 }
-                  ]
+                  "condition": "minecraft:survives_explosion"
                 },
                 {
-                  "type": "minecraft:item",
-                  "name": "minecraft:stick",
-                  "conditions": [
-                    { "condition": "minecraft:random_chance", "chance": 0.02 }
-                  ]
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.05
                 }
-              ],
-              "conditions": [
-                { "condition": "minecraft:survives_explosion" }
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:stick",
+          "conditions": [
+            {
+              "condition": "minecraft:survives_explosion"
+            },
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.02
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:any_of",
+            "terms": [
+              {
+                "condition": "minecraft:match_tool",
+                "predicate": {
+                  "items": "minecraft:shears"
+                }
+              },
+              {
+                "condition": "minecraft:has_silk_touch"
+              }
+            ]
+          }
         }
       ]
     }
