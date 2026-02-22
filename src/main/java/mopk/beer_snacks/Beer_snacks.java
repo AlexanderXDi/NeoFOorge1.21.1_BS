@@ -4,9 +4,8 @@ import static mopk.beer_snacks.CreativeTab.CREATIVE_MODE_TABS;
 import static mopk.beer_snacks.CreativeTab.MOD_TAB;
 import static mopk.beer_snacks.blocks.ModBlocks.*;
 import static mopk.beer_snacks.items.ModItems.*;
-import static mopk.beer_snacks.tree_generation.PalmTrunkPlacer.*;
 import static mopk.beer_snacks.tree_generation.PalmFoliagePlacer.*;
-
+import static mopk.beer_snacks.tree_generation.PalmTrunkPlacer.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -25,7 +24,6 @@ public class Beer_snacks {
         CREATIVE_MODE_TABS.register(modEventBus);
         FOLIAGE.register(modEventBus);
         TRUNKS.register(modEventBus);
-
 
         modEventBus.addListener(this::buildCreativeTabs);
     }

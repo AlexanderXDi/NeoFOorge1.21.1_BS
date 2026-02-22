@@ -2,58 +2,55 @@ package mopk.beer_snacks.tree_generation;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import mopk.beer_snacks.Beer_snacks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class PalmFoliagePlacer extends FoliagePlacer {
-    public static final MapCodec<PalmFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(
-            instance -> foliagePlacerParts(instance).apply(instance, PalmFoliagePlacer::new)
-    );
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Supplier;
 
-    public PalmFoliagePlacer(IntProvider radius, IntProvider offset) {
-        super(radius, offset);
-    }
+import static mopk.beer_snacks.Beer_snacks.MODID;
+
+public class PalmTrunkPlacer extends TrunkPlacer {
+    public static final MapCodec<PalmTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(i -> trunkPlacerParts(i).apply(i, PalmTrunkPlacer::new));
+
+    public static final DeferredRegister<TrunkPlacerType<?>> TRUNKS = DeferredRegister.create(Registries.TRUNK_PLACER_TYPE, MODID);
+    public static final Supplier<TrunkPlacerType<PalmTrunkPlacer>> PALM_TRUNK = TRUNKS.register("palm_trunk", () -> new TrunkPlacerType<>(PalmTrunkPlacer.CODEC));
+
+    public PalmTrunkPlacer(int base, int rA, int rB) { super(base, rA, rB); }
+
+    @Override protected TrunkPlacerType<?> type() { return PALM_TRUNK.get(); }
 
     @Override
-    protected FoliagePlacerType<?> type() {
-        return ModTreePlacers.PALM_FOLIAGE.get();
-    }
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> setter, RandomSource random, int height, BlockPos pos, TreeConfiguration config) {
+        setDirtAt(level, setter, random, pos.below(), config);
+        BlockPos current = pos;
+        Direction leanDir = Direction.from2DDataValue(random.nextInt(4));
 
-    @Override
-    protected void createFoliage(LevelSimulatedReader level, FoliageSetter blockSetter, RandomSource random, TreeConfiguration config, int maxFreeTreeHeight, FoliageAttachment attachment, int foliageHeight, int radius, int offset) {
-        BlockPos center = attachment.pos().above(offset);
+        int firstBendAt = 2 + random.nextInt(2);
 
-        // Ставим центральный блок листвы
-        blockSetter.set(center, config.foliageProvider.getState(random, center));
+        for (int i = 0; i < height; i++) {
+            placeLog(level, setter, random, current, config);
 
-        // 4 ветки пальмы в стороны
-        for (Direction dir : Direction.Plane.HORIZONTAL) {
-            for (int i = 1; i <= radius; i++) {
-                BlockPos leafPos = center.relative(dir, i);
-
-                // Последний блок ветки опускаем на 1 ниже, чтобы она "плакала"
-                if (i == radius) {
-                    leafPos = leafPos.below();
+            if (i < height - 1) {
+                if (i == firstBendAt) {
+                    BlockPos bridgePos = current.relative(leanDir);
+                    placeLog(level, setter, random, bridgePos, config);
+                    current = bridgePos;
                 }
-
-                blockSetter.set(leafPos, config.foliageProvider.getState(random, leafPos));
+                current = current.above();
             }
         }
-    }
-
-    @Override
-    public int foliageHeight(RandomSource random, int height, TreeConfiguration config) {
-        return 0; // Для пальмы высота кроны не нужна, она плоская
-    }
-
-    @Override
-    protected boolean shouldSkipLocation(RandomSource random, int localX, int localY, int localZ, int radius, boolean giantTrunk) {
-        return false;
+        return List.of(new FoliagePlacer.FoliageAttachment(current, 0, false));
     }
 }
