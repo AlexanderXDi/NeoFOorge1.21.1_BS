@@ -33,52 +33,46 @@ public class PalmTrunkPlacer extends TrunkPlacer {
 
     @Override
     public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> setter, RandomSource random, int height, BlockPos pos, TreeConfiguration config) {
-        // Ставим блок земли под деревом
         setDirtAt(level, setter, random, pos.below(), config);
 
         BlockPos current = pos; // Текущая позиция для постановки бревна
         Direction leanDir = Direction.from2DDataValue(random.nextInt(4)); // Выбираем одно направление наклона для всего дерева
 
-        // Рандомим высоту первого изгиба (например, на 2-м или 3-м блоке)
-        int firstBendAt = 2 + random.nextInt(2);
-        int secondBendAt = 4 + random.nextInt(2);
+        int firstBendAt = 4 + random.nextInt(1);
+        int secondBendAt = firstBendAt + random.nextInt(2,3);
+        int thirdBendAt = secondBendAt + random.nextInt(1,2);
 
-        for (int i = -1; i < height; i++) {
-            // 1. Сначала ставим бревно в текущей позиции
+        int fourthBendAt = random.nextInt(2);
+
+        for (int i = 0; i < height; i++) {
             placeLog(level, setter, random, current, config);
-
-            // 2. Проверяем, нужно ли сместить ствол вбок (если это не последний блок дерева)
-            if (i < height) {
-
-                // --- МЕСТО СМЕЩЕНИЯ (МОСТИК) ---
-                if (i == firstBendAt) {
-                    // Ставим бревнышко-мостик РЯДОМ на том же уровне Y
-                    // Это соединяет две части ствола целой гранью блока
-                    BlockPos bridgePos = current.relative(leanDir);
-                    placeLog(level, setter, random, bridgePos, config);
-
-                    // Перемещаем рабочую точку на этот мостик, чтобы дерево росло дальше отсюда
-                    current = bridgePos;
-                }
-
-                if (i == secondBendAt) {
-                    // Ставим бревнышко-мостик РЯДОМ на том же уровне Y
-                    // Это соединяет две части ствола целой гранью блока
-                    BlockPos bridgePos = current.relative(leanDir);
-                    placeLog(level, setter, random, bridgePos, config);
-
-                    // Перемещаем рабочую точку на этот мостик, чтобы дерево росло дальше отсюда
-                    current = bridgePos;
-                }
-                // --- КОНЕЦ МЕСТА СМЕЩЕНИЯ ---
-
-                // Поднимаемся на один блок выше для следующего этапа цикла
-                current = current.above();
+            if (i == firstBendAt && i != height -1) {
+                BlockPos bridgePos = current.relative(leanDir);
+                placeLog(level, setter, random, bridgePos, config);
+                current = bridgePos;
             }
+
+            if (i == secondBendAt && i != height -1) {
+                BlockPos bridgePos = current.relative(leanDir);
+                placeLog(level, setter, random, bridgePos, config);
+                current = bridgePos;
+            }
+
+            if (i == thirdBendAt && i != height - 1) {
+                BlockPos bridgePos = current.relative(leanDir);
+                placeLog(level, setter, random, bridgePos, config);
+                current = bridgePos;
+            }
+
+            if (i == height - 1 && fourthBendAt != 1) {
+                BlockPos bridgePos = current.relative(leanDir);
+                placeLog(level, setter, random, bridgePos, config);
+                current = bridgePos;
+            }
+
+            current = current.above();
         }
 
-        // Возвращаем точку прикрепления листвы СТРОГО в позиции последнего поставленного бревна.
-        // Это гарантирует, что листва не будет "висеть" в воздухе.
         return List.of(new FoliagePlacer.FoliageAttachment(current, 0, false));
     }
 }
