@@ -4,21 +4,31 @@
     {
       "type": "minecraft:count",
       "count": {
-        "type": "minecraft:weighted_list",
-        "distribution": [
-          { "data": 0, "weight": 5 },
-          { "data": 1, "weight": 1 }
-        ]
+        "type": "minecraft:uniform",
+        "min_inclusive": 1,
+        "max_inclusive": 3
       }
     },
-    { "type": "minecraft:in_square" },
-    { "type": "minecraft:surface_relative_threshold_filter", "heightmap": "MOTION_BLOCKING", "min_inclusive": 0, "max_inclusive": 255 },
-    { "type": "minecraft:biome" },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:surface_relative_threshold_filter",
+      "heightmap": "OCEAN_FLOOR_WG",
+      "max_inclusive": 255,
+      "min_inclusive": 62
+    },
+    {
+      "type": "minecraft:biome"
+    },
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
         "type": "minecraft:matching_blocks",
-        "blocks": [ "minecraft:sand" ]
+        "blocks": [
+          "minecraft:sand",
+          "minecraft:red_sand"
+        ]
       }
     }
   ]
