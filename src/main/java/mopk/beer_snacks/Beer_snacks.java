@@ -6,7 +6,6 @@ import static mopk.beer_snacks.blocks.ModBlocks.*;
 import static mopk.beer_snacks.items.ModItems.*;
 import static mopk.beer_snacks.tree_generation.PalmFoliagePlacer.*;
 import static mopk.beer_snacks.tree_generation.PalmTrunkPlacer.*;
-import mopk.beer_snacks.worldgen.ModTerrablender;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -30,9 +29,7 @@ public class Beer_snacks {
         modEventBus.addListener(this::buildCreativeTabs);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        ModTerrablender.registerRegions();
-    }
+    private void commonSetup(final FMLCommonSetupEvent event) {}
 
     private void buildCreativeTabs(final BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == MOD_TAB.getKey()) {

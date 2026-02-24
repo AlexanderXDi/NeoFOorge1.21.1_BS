@@ -1,14 +1,18 @@
 package mopk.beer_snacks.blocks;
 
 import mopk.beer_snacks.Beer_snacks;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.grower.TreeGrower;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -53,7 +57,13 @@ public class ModBlocks {
     );
 
     public static final DeferredBlock<Block> PALM_TREE_SAPLING_BLOCK = registerBlock("palm_tree_sapling_block",
-            () -> new SaplingBlock(PALM_TREE_GROWER, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
+            () -> new SaplingBlock(PALM_TREE_GROWER, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)) {
+                @Override
+                public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+                    BlockState ground = level.getBlockState(pos.below());
+                    return ground.is(BlockTags.DIRT) || ground.is(BlockTags.SAND);
+                }
+            });
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
