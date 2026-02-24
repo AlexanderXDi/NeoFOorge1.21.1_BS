@@ -1,0 +1,24 @@
+{
+  "has_precipitation": true,
+  "temperature": 0.95,
+  "downfall": 0.8,
+  "effects": {
+    "fog_color": 12638463,
+    "sky_color": 8103167,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "grass_color": 10341418,
+    "foliage_color": 10341418,
+    "ambient_sound": "minecraft:ambient.basalt_deltas.loop"
+  },
+  "spawners": {
+    "creature": [{ "type": "minecraft:turtle", "weight": 5, "minCount": 1, "maxCount": 4 }]
+  },
+  "spawn_costs": {},
+  "carvers": { "air": [ "minecraft:cave" ] },
+  "features": [
+    [], [], [], [], [], [], [], [], [],
+    [ "beer_snacks:palm_placed" ],
+    [ "minecraft:patch_sugar_cane", "minecraft:patch_cactus" ]
+  ]
+}

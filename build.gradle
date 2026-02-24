@@ -62,9 +62,12 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     mavenLocal()
+    maven { url = "https://maven.minecraftforge.net/" }
 }
 
 dependencies {
+    implementation "net.neoforged:neoforge:${"21.11.38-beta"}"
+    implementation "com.github.glitchfiend:TerraBlender-neoforge:1.21.1-4.1.0.8"
 }
 
 tasks.withType(ProcessResources).configureEach {

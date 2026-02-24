@@ -86,7 +86,7 @@ public class CoconutBlock extends FallingBlock {
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
         if (!level.isClientSide && level.getBlockState(pos.above()).isAir()) {
             FallingBlockEntity entity = FallingBlockEntity.fall(level, pos, level.getBlockState(pos));
-            this.falling(entity); // Применяем настройки урона
+            this.falling(entity);
         }
     }
 
@@ -94,7 +94,7 @@ public class CoconutBlock extends FallingBlock {
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockState aboveState = level.getBlockState(pos.above());
 
-        if (aboveState.is(BlockTags.AIR) != true) {
+        if (aboveState.is(BlockTags.AIR) != true && aboveState.is(BlockTags.AIR) != true) {
             return true;
         }
         return false;
