@@ -4,5 +4,7 @@
   "block.beer_snacks.palm_tree_plank_block": "Пальмовая доска",
   "block.beer_snacks.palm_tree_log_block": "Пальмовое дерево",
   "block.beer_snacks.palm_tree_leaves_block": "Пальмовые листья",
-  "block.beer_snacks.palm_tree_sapling_block": "Пальмовый саженец"
+  "block.beer_snacks.palm_tree_sapling_block": "Пальмовый саженец",
+  "block.beer_snacks.coconut_block": "Кокос",
+  "block.beer_snacks.shaved_coconut": "Бритый кокос"
 }

@@ -3,12 +3,14 @@ package mopk.beer_snacks.tree_generation;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import mopk.beer_snacks.Beer_snacks;
+import mopk.beer_snacks.blocks.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
@@ -79,6 +81,19 @@ public class PalmFoliagePlacer extends FoliagePlacer {
 
                 // Запоминаем текущую высоту для следующей итерации (чтобы знать, когда ставить мостик)
                 currentYOffset = targetYOffset;
+            }
+        }
+
+        for (Direction dir : Direction.Plane.HORIZONTAL) {
+            if (random.nextFloat() < 0.4F) { // Шанс 40% на появление кокоса на ветке
+                // Позиция: под первым блоком ветки (вплотную к стволу)
+                BlockPos coconutPos = center.relative(dir, 1).below();
+
+                // Проверяем, пусто ли там (чтобы не заменить бревно)
+                if (level.isStateAtPosition(coconutPos, BlockBehaviour.BlockStateBase::isAir)) {
+                    // Ставим блок кокоса напрямую через сеттер
+                    setter.set(coconutPos, ModBlocks.COCONUT_BLOCK.get().defaultBlockState());
+                }
             }
         }
     }

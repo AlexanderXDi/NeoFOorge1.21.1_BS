@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "hits=0": { "model": "beer_snacks:block/coconut_block_stage0" },
+    "hits=1": { "model": "beer_snacks:block/coconut_block_stage1" },
+    "hits=2": { "model": "beer_snacks:block/coconut_block_stage2" }
+  }
+}

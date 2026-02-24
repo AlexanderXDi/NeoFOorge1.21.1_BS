@@ -10,6 +10,8 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -35,6 +37,13 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> PALM_TREE_LEAVES_BLOCK = registerBlock("palm_tree_leaves_block",
             () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
+
+    public static final DeferredBlock<Block> COCONUT_BLOCK = registerBlock("coconut_block",
+            () -> new CoconutBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)
+                    .mapColor(MapColor.COLOR_BROWN)
+                    .strength(0.5F)
+                    .sound(SoundType.WOOD)
+                    .pushReaction(PushReaction.DESTROY)));
 
     public static final TreeGrower PALM_TREE_GROWER = new TreeGrower(
             "palm",

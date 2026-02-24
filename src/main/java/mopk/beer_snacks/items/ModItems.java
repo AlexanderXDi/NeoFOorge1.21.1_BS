@@ -12,4 +12,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> TAB_ICON = ITEMS.register("tab_icon",
             () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> SHAVED_COCONUT = ITEMS.register("shaved_coconut",
+            () -> new Item(new Item.Properties()));
 }
