@@ -1,8 +1,7 @@
-package mopk.beer_snacks.tree_generation;
+package mopk.beer_snacks.worldgen.tree_generation;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import mopk.beer_snacks.Beer_snacks;
 import mopk.beer_snacks.blocks.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

@@ -4,8 +4,8 @@ import static mopk.beer_snacks.CreativeTab.CREATIVE_MODE_TABS;
 import static mopk.beer_snacks.CreativeTab.MOD_TAB;
 import static mopk.beer_snacks.blocks.ModBlocks.*;
 import static mopk.beer_snacks.items.ModItems.*;
-import static mopk.beer_snacks.tree_generation.PalmFoliagePlacer.*;
-import static mopk.beer_snacks.tree_generation.PalmTrunkPlacer.*;
+import static mopk.beer_snacks.worldgen.tree_generation.PalmFoliagePlacer.*;
+import static mopk.beer_snacks.worldgen.tree_generation.PalmTrunkPlacer.*;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
