@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "beer_snacks:palm_beach",
+  "spawners": {
+    "type": "minecraft:turtle",
+    "weight": 5,
+    "minCount": 1,
+    "maxCount": 4
+  }
+}

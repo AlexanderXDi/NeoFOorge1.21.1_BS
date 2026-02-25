@@ -2,21 +2,15 @@
   "feature": "beer_snacks:palm",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:uniform",
-        "min_inclusive": 1,
-        "max_inclusive": 3
-      }
+      "type": "minecraft:rarity_filter",
+      "chance": 5
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:surface_relative_threshold_filter",
-      "heightmap": "OCEAN_FLOOR_WG",
-      "max_inclusive": 255,
-      "min_inclusive": 62
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
     },
     {
       "type": "minecraft:biome"
@@ -28,7 +22,8 @@
         "blocks": [
           "minecraft:sand",
           "minecraft:red_sand"
-        ]
+        ],
+        "offset": [0, -1, 0]
       }
     }
   ]
