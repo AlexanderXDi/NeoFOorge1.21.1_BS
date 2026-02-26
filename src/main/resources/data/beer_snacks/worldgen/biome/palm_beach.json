@@ -24,14 +24,5 @@
     [], [], [], [], [], [], [], [], [],
     [ "beer_snacks:palm_placed" ],
     [ "minecraft:patch_sugar_cane", "minecraft:patch_cactus" ]
-  ],
-  "parameters": {
-    "temperature": 0.95,
-    "humidity": 0.8,
-    "continentalness": -0.11,
-    "erosion": 0.1,
-    "depth": 0,
-    "weirdness": 0,
-    "offset": 0
-  }
+  ]
 }

@@ -1,6 +1,8 @@
 package mopk.beer_snacks.blocks;
 
 import mopk.beer_snacks.Beer_snacks;
+import static mopk.beer_snacks.items.ModItems.ITEMS;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -19,11 +21,10 @@ import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
 import java.util.Optional;
 import java.util.function.Supplier;
 
-import static mopk.beer_snacks.items.ModItems.ITEMS;
+
 
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
@@ -41,6 +42,9 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> PALM_TREE_LEAVES_BLOCK = registerBlock("palm_tree_leaves_block",
             () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
+
+    public static final DeferredBlock<Block> SAND_SHELL_BLOCK = registerBlock("sand_shell_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.TUFF)));
 
     public static final DeferredBlock<Block> COCONUT_BLOCK = registerBlock("coconut_block",
             () -> new CoconutBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)

@@ -6,7 +6,8 @@ import static mopk.beer_snacks.blocks.ModBlocks.*;
 import static mopk.beer_snacks.items.ModItems.*;
 import static mopk.beer_snacks.worldgen.tree_generation.PalmFoliagePlacer.*;
 import static mopk.beer_snacks.worldgen.tree_generation.PalmTrunkPlacer.*;
-import mopk.beer_snacks.worldgen.tree_generation.PalmBeachRegion;
+import mopk.beer_snacks.worldgen.ModSurfaceRules;
+import mopk.beer_snacks.worldgen.PalmBeachRegion;
 
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
@@ -14,6 +15,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import terrablender.api.Regions;
+import terrablender.api.SurfaceRuleManager;
 
 
 @Mod(Beer_snacks.MODID)
@@ -34,9 +36,8 @@ public class Beer_snacks {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            // Регистрируем регион
-            Regions.register(new PalmBeachRegion(
-                    ResourceLocation.fromNamespaceAndPath("beer_snacks", "overworld_region"), 10));
+            Regions.register(new PalmBeachRegion(ResourceLocation.fromNamespaceAndPath(MODID, "overworld_region"), 1));
+            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, ModSurfaceRules.makeRules());
         });
     }
 
@@ -49,6 +50,7 @@ public class Beer_snacks {
             event.accept(PALM_TREE_SAPLING_BLOCK.get());
             event.accept(COCONUT_BLOCK.get());
             event.accept(SHAVED_COCONUT.get());
+            event.accept(SAND_SHELL_BLOCK.get());
         }
     }
 }

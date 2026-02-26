@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:condition",
-  "if_true": { "type": "minecraft:biome", "biomes": [ "beer_snacks:palm_beach" ] },
-  "then_run": {
-    "type": "minecraft:condition",
-    "if_true": { "type": "minecraft:surface" },
-    "then_run": { "type": "minecraft:block", "result_state": { "Name": "minecraft:sand" } }
-  }
-}
