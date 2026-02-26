@@ -6,11 +6,14 @@ import static mopk.beer_snacks.blocks.ModBlocks.*;
 import static mopk.beer_snacks.items.ModItems.*;
 import static mopk.beer_snacks.worldgen.tree_generation.PalmFoliagePlacer.*;
 import static mopk.beer_snacks.worldgen.tree_generation.PalmTrunkPlacer.*;
+import mopk.beer_snacks.worldgen.tree_generation.PalmBeachRegion;
 
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import terrablender.api.Regions;
 
 
 @Mod(Beer_snacks.MODID)
@@ -29,7 +32,13 @@ public class Beer_snacks {
         modEventBus.addListener(this::buildCreativeTabs);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {}
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            // Регистрируем регион
+            Regions.register(new PalmBeachRegion(
+                    ResourceLocation.fromNamespaceAndPath("beer_snacks", "overworld_region"), 10));
+        });
+    }
 
     private void buildCreativeTabs(final BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == MOD_TAB.getKey()) {
